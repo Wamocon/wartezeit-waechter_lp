@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Wartezeit-Wächter Icon">
+  <defs>
+    <linearGradient id="bgLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ecfdf5"/>
+      <stop offset="100%" stop-color="#d1fae5"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="55%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgLight)"/>
+
+  <!-- Clock circle -->
+  <circle cx="224" cy="224" r="140" fill="none" stroke="url(#greenGrad)" stroke-width="32"/>
+
+  <!-- Hour hand (~11 o'clock) -->
+  <line x1="224" y1="224" x2="175" y2="145" stroke="url(#greenGrad)" stroke-width="24" stroke-linecap="round"/>
+  <!-- Minute hand (~2 o'clock) -->
+  <line x1="224" y1="224" x2="290" y2="264" stroke="url(#greenGrad)" stroke-width="20" stroke-linecap="round"/>
+
+  <!-- Center dot -->
+  <circle cx="224" cy="224" r="16" fill="url(#greenGrad)"/>
+
+  <!-- Monitoring graph (lower right) -->
+  <path d="M 310 400 L 345 358 L 375 378 L 410 320 L 445 338" stroke="url(#greenGrad)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

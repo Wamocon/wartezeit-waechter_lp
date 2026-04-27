@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wartezeit-Wächter – Echtzeit-Wartezeiten überwachen kostenlos</title>
+  <meta name="description" content="Überwache Wartezeiten bei Ärzten, Ämtern und Behörden kostenlos mit Wartezeit-Wächter. Kein Login, Echtzeit-Alerts und Datenschutz-first.">
+  <meta name="keywords" content="wartezeit überwachen, arzt wartezeit app, behörden wartezeit, echtzeit wartezeit, wartezeit benachrichtigung">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Wartezeit-Wächter">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="app-icon-light.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://wartezeit-waechter.vercel.app/">
+
+  <meta property="og:title" content="Wartezeit-Wächter – Dein Wächter für kürzere Wartezeiten.">
+  <meta property="og:description" content="Kostenlos, kein Login, Datenschutz-first: Überwache Wartezeiten und werde sofort benachrichtigt, wenn es ruhiger wird.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="Wartezeit-Wächter">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wartezeit-Wächter – Echtzeit-Wartezeiten überwachen">
+  <meta name="twitter:description" content="Kein Konto, kein Stress: Überwache Wartezeiten bei Ärzten und Behörden und erhalte sofort eine Benachrichtigung.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Wartezeit-Wächter",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "description": "Kostenlose Echtzeit-Wartezeit-Überwachung bei Ärzten, Behörden und Ämtern. Kein Login, Sofort-Benachrichtigungen, Datenschutz-first.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR", "description": "Kostenlos nutzbar"},
+    "author": {"@type": "Organization", "name": "WAMOCON GmbH"}
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Ist der Wartezeit-Wächter kostenlos?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Die Kernfunktionen sind kostenlos und werbefrei nutzbar."}},
+      {"@type": "Question", "name": "Welche Einrichtungen kann ich überwachen?", "acceptedAnswer": {"@type": "Answer", "text": "Arztpraxen, Behörden, Ämter und viele weitere Orte mit Warteschlangen."}},
+      {"@type": "Question", "name": "Wie werde ich benachrichtigt?", "acceptedAnswer": {"@type": "Answer", "text": "Per Browser-Benachrichtigung – keine App-Installation erforderlich."}},
+      {"@type": "Question", "name": "Werden meine Daten gespeichert?", "acceptedAnswer": {"@type": "Answer", "text": "Nur das Nötigste, sicher und datenschutzkonform nach DSGVO."}}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --color-bg: #f5f5f7;
+      --color-bg-alt: #eeeef0;
+      --color-surface: #ffffff;
+      --color-border: rgba(0,0,0,.08);
+      --color-border-hover: rgba(0,0,0,.14);
+      --color-border-accent: rgba(5,150,105,.18);
+      --color-accent: #059669;
+      --color-accent-dim: #047857;
+      --color-accent-soft: rgba(5,150,105,.06);
+      --color-text-main: #111113;
+      --color-muted: #555558;
+      --color-faint: #8e8e93;
+      --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-text-main); }
+  </style>
+</head>
+
+<body class="overflow-x-hidden antialiased leading-relaxed">
+  <div class="gradient-orbs" aria-hidden="true">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+  </div>
+
+  <div class="fixed top-0 left-0 right-0 z-[60] overflow-hidden" style="height:48px;background:#0a0a0c;border-bottom:1px solid rgba(5,150,105,.25);">
+    <div style="display:flex;align-items:center;height:100%;white-space:nowrap;animation:ticker-scroll 18s linear infinite;">
+      <span class="ticker-item">WARTEZEIT-WÄCHTER &mdash; Echtzeit. Kostenlos. Datenschutz-first.</span>
+      <span class="ticker-item">WARTEZEIT-WÄCHTER &mdash; Echtzeit. Kostenlos. Datenschutz-first.</span>
+      <span class="ticker-item">WARTEZEIT-WÄCHTER &mdash; Echtzeit. Kostenlos. Datenschutz-first.</span>
+      <span class="ticker-item">WARTEZEIT-WÄCHTER &mdash; Echtzeit. Kostenlos. Datenschutz-first.</span>
+    </div>
+  </div>
+
+  <nav class="fixed top-[48px] left-0 right-0 z-50 h-16 flex items-center transition-all duration-400" id="nav">
+    <div class="w-full max-w-[1100px] mx-auto px-5 md:px-10 flex items-center justify-between">
+      <a href="#" class="hover:opacity-70 transition-opacity flex items-center gap-2" style="text-decoration:none;">
+        <img src="app-icon-light.svg" alt="Wartezeit-Wächter Icon" style="width:28px;height:28px;">
+        <span style="font-size:1.5rem;font-weight:900;letter-spacing:-0.5px;color:#059669;">Wartezeit-Wächter</span>
+      </a>
+      <div class="hidden md:flex items-center gap-4">
+        <div class="nav-links-pill">
+          <a href="#problem" class="nav-link" data-nav-section="problem">Problem</a>
+          <a href="#warum" class="nav-link" data-nav-section="warum">Lösung</a>
+          <a href="#funktionen" class="nav-link" data-nav-section="funktionen">Funktionen</a>
+          <a href="#process" class="nav-link" data-nav-section="process">Prozess</a>
+          <a href="#ablauf" class="nav-link" data-nav-section="ablauf">So geht's</a>
+          <a href="#faq" class="nav-link" data-nav-section="faq">FAQ</a>
+        </div>
+        <a href="https://wartezeit-waechter.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;background:#059669;color:#fff;font-size:.8rem;font-weight:700;border-radius:999px;text-decoration:none;">Zur App</a>
+        <div class="flex items-center gap-2 text-sm font-semibold" style="color:var(--color-muted);background:rgba(255,255,255,0.05);padding:6px 12px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);">
+          <a href="index.html" style="color:#059669;text-decoration:none;">DE</a>
+          <span style="opacity:0.3">|</span>
+          <a href="index.en.html" class="hover:text-white transition-colors" style="text-decoration:none;">EN</a>
+        </div>
+      </div>
+      <button class="nav-hamburger md:hidden" id="navHamburger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div id="mobileMenu" aria-hidden="true">
+    <button style="position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">&times;</button>
+    <div class="mm-brand">Wartezeit-Wächter</div>
+    <div class="mm-grid">
+      <a href="#problem" class="mm-link" onclick="closeMobileMenu()">Problem</a>
+      <a href="#warum" class="mm-link" onclick="closeMobileMenu()">Lösung</a>
+      <a href="#funktionen" class="mm-link" onclick="closeMobileMenu()">Funktionen</a>
+      <a href="#process" class="mm-link" onclick="closeMobileMenu()">Prozess</a>
+      <a href="#ablauf" class="mm-link" onclick="closeMobileMenu()">So geht's</a>
+      <a href="#faq" class="mm-link" onclick="closeMobileMenu()">FAQ</a>
+      <a href="#final-cta" class="mm-link" onclick="closeMobileMenu()">Starten</a>
+    </div>
+    <div style="margin-top:2rem;display:flex;justify-content:center;gap:1.5rem;font-size:1.2rem;font-weight:700;">
+      <a href="index.html" style="color:#059669;text-decoration:none;">DE</a>
+      <span style="color:var(--color-border);">|</span>
+      <a href="index.en.html" style="color:var(--color-muted);text-decoration:none;">EN</a>
+    </div>
+  </div>
+
+  <section class="relative flex items-center justify-center overflow-hidden pt-[160px] pb-[130px]" id="hero">
+    <canvas id="heroParticles" class="absolute inset-0 z-[1]"></canvas>
+    <div class="absolute inset-0 z-0" style="background:radial-gradient(ellipse 70% 55% at 50% 40%,rgba(5,150,105,.09)0%,transparent 65%),radial-gradient(ellipse 50% 60% at 20% 80%,rgba(5,150,105,.05)0%,transparent 50%),radial-gradient(ellipse 45% 50% at 80% 25%,rgba(16,185,129,.07)0%,transparent 50%);"></div>
+    <div class="absolute inset-0 z-0 opacity-[.06]" style="background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 60% 55% at 50% 50%,black 0%,transparent 70%);"></div>
+
+    <div class="relative z-10 text-center max-w-[960px] px-5">
+      <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7" style="background:rgba(5,150,105,.12);border:1px solid rgba(5,150,105,.35);">
+        <img src="app-icon-light.svg" alt="Wartezeit-Wächter" style="width:16px;height:16px;">
+        <span style="font-size:.8rem;font-weight:700;color:#10b981;letter-spacing:.06em;text-transform:uppercase;">Kein Login. Echtzeit-Alerts. Kostenlos.</span>
+      </div>
+
+      <h1 class="reveal text-3xl md:text-7xl lg:text-8xl font-bold leading-[1.08] tracking-tight mb-6">
+        Kürzere Wartezeiten.<br><span class="gradient-text">Dein persönlicher Wächter.</span>
+      </h1>
+      <p class="reveal text-lg md:text-xl max-w-[680px] mx-auto leading-relaxed" style="color:var(--color-muted);">
+        Wartezeit-Wächter überwacht Wartezeiten bei Ärzten, Ämtern und Behörden – und benachrichtigt dich sofort, wenn es ruhiger wird.
+      </p>
+
+      <div class="reveal mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://wartezeit-waechter.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 30px;background:#059669;color:#fff;font-size:.95rem;font-weight:700;border-radius:12px;text-decoration:none;transition:all .25s ease;box-shadow:0 4px 24px rgba(5,150,105,.3);">Zur App</a>
+      </div>
+
+      <p class="reveal mt-5 text-sm" style="color:#8e8e93;">Echtzeit-Monitoring. Sofort-Benachrichtigungen. Kein Registrierungszwang.</p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-[120px] z-20" style="background:linear-gradient(to bottom, transparent, #0f1117);"></div>
+  </section>
+
+  <section class="relative section-dark" id="problem" style="padding:6.5rem 0 5rem;margin-top:-2px;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <h2 class="reveal text-4xl md:text-6xl font-black leading-[1.05] tracking-tight mb-6" style="color:#f0f0f2;">
+        Millionen Menschen verlieren täglich<br><span style="color:#059669;">wertvolle Zeit beim Warten</span>
+      </h2>
+      <p class="reveal text-lg max-w-[620px] leading-relaxed mb-16" style="color:#9a9aaa;">Drei Kennzahlen zeigen, warum smarte Wartezeit-Überwachung wichtig ist: das Ausmaß des Problems, die Nachfrage nach digitalen Lösungen und typische Wartezeiten in Deutschland.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(5,150,105,.07);border:1px solid rgba(5,150,105,.25);">
+          <span class="block stat-value font-black leading-none mb-3 tabular-nums" style="color:#059669;" data-target="420" data-suffix=" Mio.">0</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">Überstunden durch Warterei pro Jahr in Deutschland</span>
+          <span class="block text-xs" style="color:#7a7a88;">zeigt das Ausmaß verschwendeter Zeit</span>
+        </div>
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(5,150,105,.07);border:1px solid rgba(5,150,105,.25);">
+          <span class="block stat-value font-black leading-none mb-3 tabular-nums" style="color:#059669;" data-target="67" data-suffix="%">0</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">wünschen Echtzeit-Infos zu Wartezeiten</span>
+          <span class="block text-xs" style="color:#7a7a88;">belegt den dringenden Bedarf an smarten Lösungen</span>
+        </div>
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(5,150,105,.07);border:1px solid rgba(5,150,105,.25);">
+          <span class="block text-xs font-semibold mb-2 uppercase tracking-[0.12em]" style="color:#10b981;">bis zu</span>
+          <span class="block stat-value font-black leading-none mb-1 tabular-nums" style="color:#059669;" data-target="6" data-suffix=" Wo.">0</span>
+          <span class="block text-sm font-semibold mb-2" style="color:#d3d3da;"></span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">typische Wartezeit auf Facharzttermine</span>
+          <span class="block text-xs" style="color:#7a7a88;">motiviert proaktives Monitoring statt passivem Warten</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 section-dark" id="warum" style="background:#050508;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-14">
+        <h2 class="reveal text-3xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-5" style="color:#f0f0f2;">Warum Wartezeit-Wächter</h2>
+        <p class="reveal text-lg max-w-[650px] mx-auto leading-relaxed" style="color:#9999a1;">Vier klare Vorteile für alle, die ihre Zeit zurückgewinnen und nie wieder unnötig warten wollen.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Echtzeit-Monitoring</h3>
+          <p style="color:#9a9aaa;">Überwache Wartezeiten bei Ärzten, Ämtern und Behörden in Echtzeit – ohne manuelles Nachschauen.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Sofort-Benachrichtigungen</h3>
+          <p style="color:#9a9aaa;">Werde sofort benachrichtigt, wenn die Wartezeit auf dein Wunschniveau sinkt – per Browser oder E-Mail.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Datenschutz-first</h3>
+          <p style="color:#9a9aaa;">Keine Pflichtregistrierung. Deine Präferenzen bleiben bei dir – lokal und sicher.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Mehrere Standorte</h3>
+          <p style="color:#9a9aaa;">Überwache mehrere Einrichtungen gleichzeitig und behalte den Überblick mit dem Dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="funktionen" class="py-24 section-alt">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-14">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4">Kernfunktionen, die dir Zeit sparen</h2>
+        <p class="reveal text-lg max-w-[680px] mx-auto" style="color:var(--color-muted);">Alle wichtigen Funktionen des Wartezeit-Wächters in einer klaren, einfach bedienbaren Oberfläche.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Standort-Überwachung</h3>
+          <p style="color:var(--color-muted);">Füge Arztpraxen, Ämter und Behörden zu deiner Watchlist hinzu und starte sofort mit dem Monitoring.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Smarte Schwellenwerte</h3>
+          <p style="color:var(--color-muted);">Lege Wartezeit-Schwellenwerte fest und erhalte nur dann eine Benachrichtigung, wenn sie wirklich relevant sind.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Dashboard-Übersicht</h3>
+          <p style="color:var(--color-muted);">Alle überwachten Standorte und ihre aktuellen Wartezeiten auf einen Blick im übersichtlichen Dashboard.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Benachrichtigungen ohne App</h3>
+          <p style="color:var(--color-muted);">Erhalte Alerts direkt per Browser-Benachrichtigung – keine App-Installation nötig.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" id="process" style="background:#090a0e;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color:#f0f0f2;">Wartezeit-Wächter als schlaues Monitoring-System</h2>
+        <p class="reveal text-lg max-w-[760px] mx-auto" style="color:#a2a2ab;">Das Ziel: aus passivem Warten ein aktives, informiertes Handeln machen. Der Ablauf zeigt, wie du das Maximum aus deiner Zeit herausholst.</p>
+      </div>
+      <div class="reveal process-shell" id="processFlow">
+        <div class="process-track">
+          <div class="process-track__bar" id="processFlowBar"></div>
+          <div class="process-track__dot" id="processFlowDot"></div>
+        </div>
+        <div class="process-grid">
+          <article class="process-step process-step--active" tabindex="0">
+            <div class="process-step__index">01</div>
+            <h3 class="process-step__title">Standort hinzufügen</h3>
+            <p class="process-step__text">Suche und füge Arztpraxis, Behörde oder ein anderes Amt zu deiner Watchlist hinzu.</p>
+            <p class="process-step__hint">Zum Aufklappen klicken</p>
+            <div class="process-step__more">Du startest ohne Registrierung und kannst sofort echte Standorte überwachen.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">02</div>
+            <h3 class="process-step__title">Schwellenwert festlegen</h3>
+            <p class="process-step__text">Wähle, ab welcher Wartezeit du benachrichtigt werden möchtest. Pro-Gast-ähnlich dynamisch.</p>
+            <p class="process-step__hint">Zum Aufklappen klicken</p>
+            <div class="process-step__more">Das System zeigt dir frühzeitig, wann ein günstiger Zeitpunkt zum Vorstelligwerden ist.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">03</div>
+            <h3 class="process-step__title">Monitoring läuft</h3>
+            <p class="process-step__text">Wartezeit-Wächter prüft die Wartezeiten regelmäßig im Hintergrund für dich.</p>
+            <p class="process-step__hint">Zum Aufklappen klicken</p>
+            <div class="process-step__more">Kein manuelles Nachschauen, kein Stress – der Wächter arbeitet für dich.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">04</div>
+            <h3 class="process-step__title">Benachrichtigung erhalten</h3>
+            <p class="process-step__text">Wenn die Wartezeit sinkt, wirst du sofort und zuverlässig benachrichtigt.</p>
+            <p class="process-step__hint">Zum Aufklappen klicken</p>
+            <div class="process-step__more">Ergebnis: Weniger Wartezeit, mehr Planungssicherheit und gewonnene Lebenszeit.</div>
+          </article>
+        </div>
+        <p class="process-target"><strong>Ziel:</strong> Weniger Wartezeit, mehr Planungssicherheit und ein klarer Überblick für alle, die ihre Zeit schätzen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" style="background:#0f1117;" id="ablauf">
+    <div class="max-w-[1000px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-12">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color:#f0f0f2;">So funktioniert es in 3 Schritten</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#10b981;">Schritt 1</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Standort hinzufügen</h3>
+          <p style="color:#9a9aaa;">Suchst du nach Arztpraxis, Behörde oder Amt und fügst sie zu deiner Watchlist hinzu.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#10b981;">Schritt 2</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Schwellenwert setzen</h3>
+          <p style="color:#9a9aaa;">Wähle, ab wann du benachrichtigt werden möchtest. Der Wächter erledigt den Rest.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#10b981;">Schritt 3</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Benachrichtigung erhalten</h3>
+          <p style="color:#9a9aaa;">Wenn die Wartezeit sinkt, benachrichtigt dich der Wächter sofort.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24" id="faq">
+    <div class="max-w-[900px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4">Häufige Fragen</h2>
+      </div>
+      <div id="faqList" class="rounded-2xl bg-white border overflow-hidden">
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Ist der Wartezeit-Wächter kostenlos?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Ja. Die Kernfunktionen sind kostenlos und werbefrei nutzbar.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Welche Einrichtungen kann ich überwachen?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Arztpraxen, Behörden, Ämter und viele weitere Orte mit Warteschlangen.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Wie werde ich benachrichtigt?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Per Browser-Benachrichtigung – keine App-Installation erforderlich.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Werden meine Daten gespeichert?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Nur das Nötigste, sicher und datenschutzkonform nach DSGVO.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" id="final-cta" style="background:#050508;">
+    <div class="max-w-[900px] mx-auto px-5 md:px-10 text-center">
+      <h2 class="reveal text-3xl md:text-5xl font-black leading-[1.1] mb-5" style="color:#f0f0f2;">Starte jetzt – und warte nie wieder unnötig.</h2>
+      <p class="reveal text-lg max-w-[620px] mx-auto mb-9" style="color:#9a9aaa;">Kostenlos, direkt nutzbar und auf das Wesentliche reduziert.</p>
+      <div class="reveal flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://wartezeit-waechter.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 30px;background:#059669;color:#fff;font-weight:700;border-radius:12px;text-decoration:none;">Jetzt Wartezeit überwachen</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#050508;color:#8e8e93;padding:32px 20px 40px;text-align:center;border-top:1px solid rgba(255,255,255,.08);">
+    <div class="flex items-center justify-center gap-2 mb-2">
+      <img src="app-icon-light.svg" alt="Wartezeit-Wächter" style="width:18px;height:18px;opacity:.85;">
+      <img src="made-in-germany-sign.svg" alt="Entwickelt in Deutschland" style="height:40px;opacity:.85;">
+      <span style="font-weight:700;color:#f0f0f2;">Wartezeit-Wächter</span>
+    </div>
+    <p style="font-size:.9rem;">Echtzeit-Wartezeit-Monitoring. Kostenlos. Datenschutz-first.</p>
+    <div style="margin-top:12px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:.85rem;">
+      <a href="https://wartezeit-waechter.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:#6ee7b7;text-decoration:none;">App öffnen</a>
+      <a href="impressum.html" style="color:#6ee7b7;text-decoration:none;">Impressum</a>
+      <a href="agb.html" style="color:#6ee7b7;text-decoration:none;">AGB</a>
+      <a href="datenschutz.html" style="color:#6ee7b7;text-decoration:none;">Datenschutz</a>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Nach oben">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
+    <div class="cookie-banner__inner">
+      <h3 style="font-weight:700;font-size:1.05rem;margin-bottom:.45rem;">Hinweis zu Browser-Speicher</h3>
+      <p style="font-size:.92rem;line-height:1.6;color:#4d4d55;">Wartezeit-Wächter nutzt lokalen Browser-Speicher, um deine Watchlist und Einstellungen zu sichern. Es gibt keine Pflicht-Cloud und keine Werbe-Tracker.</p>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1rem;flex-wrap:wrap;">
+        <button class="cookie-banner__btn cookie-banner__btn--reject" data-cookie-action="reject">Schließen</button>
+        <button class="cookie-banner__btn cookie-banner__btn--accept" data-cookie-action="accept">Verstanden</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
